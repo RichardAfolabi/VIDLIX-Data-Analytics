@@ -1,13 +1,13 @@
 {% extends "bootstrap/base.html" %}
 {% block html_attribs %}lang="en" charset="utf-8" {% endblock %}
-{% block title %} VIDLIX - Discovering and sharing awesome stuffs {% endblock %}
+{% block title %} VIDLIX Analytics - Just another data analytics playground {% endblock %}
 
 
 {% import "bootstrap/fixes.html" as fixes %}
 {% block head %}
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
-    <meta name="description" content="{% block description %} Discovering powerful stuffs that bring joy to the world. {% endblock %}">
+    <meta name="description" content="{% block description %} VIDLIX analytics - Playground for social media network analysis, integrated website traffic analysis, network and cybersecurity analysis and StackOverflow user behaviour metrics.. {% endblock %}">
   {{super()}}
   {{fixes.ie8()}}
 {% endblock head %}
@@ -39,7 +39,7 @@
 <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet'>
 
 <!-- CSS Plugins -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}" >
 
 <!-- CSS Custom -->
@@ -119,10 +119,10 @@
 <div class="legal">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <p class="pull-left">&copy; - Discovering and sharing awesome stuffs</p>
+      <div class="col-md-8">
+        <p class="pull-left">&copy; VIDLIX Analytics - Discovering and sharing awesome data stories.</p>
       </div>
-      <div class="col-md-6 list-inline">
+      <div class="col-md-4 list-inline">
         <ul class="pull-right">
             <li><a href="{{ url_for('about') }}">About Author</a></li>
         </ul>
