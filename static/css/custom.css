@@ -36,6 +36,7 @@ html, body {
   font-style: normal;
   background-color: #edf1f5;
   color: #586674;
+  height: 100%;
 }
 
 
@@ -60,8 +61,9 @@ h1.hl small, h2.hl small, h3.hl small, h4.hl small, h5.hl small, h6.hl small {
 
 .wrapper {
   min-height: 100% !important;
-  height: auto !important; /* for older versions of IE */
+  height: auto !important;  /* for older versions of IE */
   height: 100%;
+  position: relative;
   margin-bottom: -347px; /* showing the footer */
   padding-top: 50px;
   padding-bottom: 347px; /* avoiding content go behind the footer */
@@ -1157,6 +1159,9 @@ footer .headline h3{
   color: #8E8E8E;
   border-top: solid 1px #2b2b2b;
   font-weight: 300;
+  position: absolute; 
+  width: 100%;
+  bottom: 0;    
 }
 .legal a {
   color: #8E8E8E;
