@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="52019747-c015-43cd-ad8e-c247ba32563d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/core_template.html" afterPath="$PROJECT_DIR$/templates/core_template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="vidlix_analytics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,8 +59,8 @@
       <file leaf-file-name="core_template.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/core_template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1920439">
-              <caret line="98" column="71" selection-start-line="98" selection-start-column="71" selection-end-line="98" selection-end-column="71" />
+            <state vertical-scroll-proportion="0.13443072">
+              <caret line="95" column="59" selection-start-line="95" selection-start-column="59" selection-end-line="95" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -519,8 +518,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/core_template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1920439">
-          <caret line="98" column="71" selection-start-line="98" selection-start-column="71" selection-end-line="98" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.13443072">
+          <caret line="95" column="59" selection-start-line="95" selection-start-column="59" selection-end-line="95" selection-end-column="59" />
           <folding />
         </state>
       </provider>
