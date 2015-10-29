@@ -1,8 +1,8 @@
 
 import re
-import requests
+import requests, simplejson
 import pandas as pd
-from bokeh.plotting import figure
+from bokeh.plotting import figure, show
 from bokeh.embed import components
 from flask.ext.bootstrap import Bootstrap
 from flask import Flask, render_template, redirect, url_for, flash
@@ -17,27 +17,43 @@ bootstrap = Bootstrap()
 # Initialize extensions
 bootstrap.init_app(app)
 
+# Bokeh tools
+TOOLS = "resize,pan,wheel_zoom,box_zoom,reset,previewsave"
 
 # Initialize the URL for dataset location
-api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/stock.json'
+url_path = 'https://www.quandl.com/api/v3/datasets/USCENSUS/IE_7530.json?auth_token=W_c-rhUo457bjeN2xHgy'
 session = requests.Session()
+r = requests.get(url_path)
+new_data = r.json()
+
+column_names = new_data['dataset']['column_names']
+inp_dataset = new_data['dataset']['data']
+dframe = pd.DataFrame(inp_dataset, columns=column_names)
+dframe = dframe.set_index('Month')
+dframe.sort_index(ascending=True, inplace=True)
 
 
-# Add retries to the API calls
-session.mount('http://', requests.adapters.HTTPAdapter(max_retries=3))
-raw_data = session .get(api_url)
+def make_figure():
+    plot = figure(tools=TOOLS,
+                  title='United States Import/Exports - Nigeria',
+                  x_axis_label='date',
+                  x_axis_type='datetime')
+    plot.line(dframe.index, dframe.get('Exports'), color='#A6CEE3', legend='Exports')
+    plot.line(dframe.index, dframe.get('Imports'), color='#33A02C', legend='Imports')
+    plot.line(dframe.index, dframe.get('Balance'), color='#FB9A99', legend='Balance')
+    return plot
 
 
-# Let Bokeh know it's dealing with time Series
+
+
+
+
 @app.route('/')
 def index():
-    # plot = figure(tools=TOOLS,
-    #               title='Data from Outside Quandle WIKI set',
-    #               x_axis_label='date',
-    #               x_axis_type='datetime')
-    # script, div = components(plot)
-    return render_template('index.html')
-    # return render_template('index.html', script=script, div=div)
+    """ Homepage """
+    plot = make_figure()
+    script, div = components(plot)
+    return render_template('index.html', script=script, div=div)
 
 
 @app.route('/about/')
