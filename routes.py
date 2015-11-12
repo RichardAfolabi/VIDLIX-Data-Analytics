@@ -26,24 +26,24 @@ session = requests.Session()
 r = requests.get(url_path)
 new_data = r.json()
 
+
 column_names = new_data['dataset']['column_names']
 inp_dataset = new_data['dataset']['data']
 dframe = pd.DataFrame(inp_dataset, columns=column_names)
-dframe = dframe.set_index('Month')
-dframe.sort_index(ascending=True, inplace=True)
+dframe.Month = pd.to_datetime(dframe['Month'])
+
+TOOLS = "resize,pan,wheel_zoom,box_zoom,reset,previewsave"
 
 
 def make_figure():
-    plot = figure(tools=TOOLS,
+    plot = figure(tools=TOOLS, width=750, height=450,
                   title='United States Import/Exports - Nigeria',
                   x_axis_label='date',
                   x_axis_type='datetime')
-    plot.line(dframe.index, dframe.get('Exports'), color='#A6CEE3', legend='Exports')
-    plot.line(dframe.index, dframe.get('Imports'), color='#33A02C', legend='Imports')
-    plot.line(dframe.index, dframe.get('Balance'), color='#FB9A99', legend='Balance')
-    return plot
-
-
+    plot.line(dframe['Month'], dframe.get('Exports'), color='#A6CEE3', legend='Exports')
+    plot.line(dframe['Month'], dframe.get('Imports'), color='#33A02C', legend='Imports')
+    plot.line(dframe['Month'], dframe.get('Balance'), color='#FB9A99', legend='Balance')
+    return plo
 
 
 
@@ -53,6 +53,7 @@ def index():
     """ Homepage """
     plot = make_figure()
     script, div = components(plot)
+
     return render_template('index.html', script=script, div=div)
 
 

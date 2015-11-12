@@ -11,6 +11,8 @@
   {{super()}}
   {{fixes.ie8()}}
 
+  {{ headx | safe }}
+
 {% endblock head %}
 
 
@@ -27,7 +29,7 @@
 <script src="{{url_for('static', filename='js/isotope-custom.js')}}"></script>
 
 <!-- Load BokehJS components -->
-<script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.10.0.min.js"></script>
+{#<script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.10.0.min.js"></script>#}
 
 
 {% endblock scripts %}
@@ -51,7 +53,7 @@
 
 
 <!-- Load BokehJS CSS -->
-<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.10.0.min.css" type="text/css" />
+{#<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.10.0.min.css" type="text/css" />#}
 
 {% endblock styles %}
 
